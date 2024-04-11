@@ -1,0 +1,30 @@
+{
+  "name": "dev-portfolio",
+  "version": "0.0.1",
+  "description": "Template for developers website",
+  "main": "src/index.ts",
+  "scripts": {
+    "dev": "esbuild --watch --outfile=./dist/index.js --platform=node --target=node18 ./src/index.ts",
+    "build": "esbuild --bundle --outfile=./dist/index.js --platform=node --target=node18 --minify ./src/index.ts"
+  },
+  "keywords": [
+    "hono",
+    "jsx",
+    "localstack"
+  ],
+  "author": "Johan Smal",
+  "license": "MIT",
+  "devDependencies": {
+    "@mdx-js/esbuild": "^3.0.1",
+    "@types/aws-lambda": "^8.10.137",
+    "@types/mdx": "^2.0.13",
+    "@types/node": "^20.12.7",
+    "esbuild": "^0.20.2",
+    "tailwindcss": "^3.4.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "hono": "^4.2.3"
+  }
+}
