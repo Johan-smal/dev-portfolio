@@ -1,5 +1,5 @@
 resource "aws_lambda_function" "hono_handler" {
-  s3_bucket     = local.lambda_s3_bucket
+  s3_bucket     = local.lamdbda_s3_bucket
   s3_key        = local.lambda_s3_key
   function_name = "${var.project}-hono-handler-${terraform.workspace}"
   role          = aws_iam_role.lambda_execution_role.arn
