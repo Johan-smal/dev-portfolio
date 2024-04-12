@@ -33,3 +33,15 @@ resource "aws_iam_role" "lambda_execution_role" {
   name = "${var.project}-lambda-execution-role-${terraform.workspace}"
   assume_role_policy = data.aws_iam_policy_document.lambda_assume_role_policy_document.json
 }
+
+resource "aws_iam_role_policy_attachment" "terraform_lambda_policy" {
+  role       = aws_iam_role.lambda_execution_role.name
+  policy_arn = "arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+}
+
+resource "aws_lambda_permission" "execution_lambda_from_gateway" {
+    statement_id  = "AllowExecutionFromAPIGateway"
+    action        = "lambda:InvokeFunction"
+    function_name = aws_lambda_function.hono_handler.function_name
+    principal     = "apigateway.amazonaws.com"
+}

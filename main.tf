@@ -34,3 +34,7 @@ module "infra" {
 output "is_localstack" {
   value = local.is_localstack
 }
+
+output "infra" {
+  value = module.infra
+}

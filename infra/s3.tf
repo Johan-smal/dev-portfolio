@@ -10,6 +10,6 @@ data "archive_file" "source" {
 
 resource "aws_s3_object" "lambda_dist" {
   bucket = "${aws_s3_bucket.lambda_bucket.id}"
-  key    = "dist.zip"
+  key    = "dist-${data.archive_file.source.output_base64sha256}.zip"
   source = "${data.archive_file.source.output_path}" # its mean it depended on zip
 }
