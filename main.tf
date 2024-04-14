@@ -22,6 +22,10 @@ data "aws_caller_identity" "current" {}
 locals {
   is_localstack = data.aws_caller_identity.current.account_id == "000000000000"
 }
+locals {
+  apply_locally = local.is_localstack ? 1 : 0
+  apply_cloud = local.is_localstack ? 0 : 1
+}
 
 module "infra" {
   source = "./infra"
@@ -30,6 +34,7 @@ module "infra" {
   aws_region = var.aws_region
   is_localstack = local.is_localstack
   domain = var.domain
+  apply_cloud = local.apply_cloud
 }
 
 output "is_localstack" {

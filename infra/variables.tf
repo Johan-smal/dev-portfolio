@@ -2,6 +2,9 @@ variable "is_localstack" {
   type = bool
   default = true
 }
+variable "apply_cloud" {
+  type = number
+}
 variable "aws_region" {
   type = string
 }

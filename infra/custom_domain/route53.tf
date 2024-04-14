@@ -51,9 +51,8 @@ resource "aws_route53_record" "domain" {
   }
 }
 
-resource "aws_api_gateway_base_path_mapping" "example" {
-  api_id      = aws_api_gateway_rest_api.portfolio_api.id
+resource "aws_api_gateway_base_path_mapping" "gateway_mapping" {
+  api_id      = var.api_gateway_rest_api_id
   domain_name = aws_api_gateway_domain_name.domain_name.domain_name
-  stage_name  = aws_api_gateway_stage.stage.stage_name
-  base_path   = aws_api_gateway_stage.stage.stage_name
+  stage_name  = var.api_gateway_stage_name
 }
