@@ -4,8 +4,8 @@
   "description": "Template for developers website",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "esbuild --watch --outfile=./dist/index.js --platform=node --target=node18 ./src/index.ts",
-    "build": "esbuild --bundle --outfile=./dist/index.js --platform=node --target=node18 --minify ./src/index.ts"
+    "dev": "esbuild --watch --bundle --outfile=./dist/index.js --platform=node --target=node18 ./src/index.ts",
+    "build": "esbuild --minify --bundle --outfile=./dist/index.js --platform=node --target=node18 ./src/index.ts"
   },
   "keywords": [
     "hono",
