@@ -4,6 +4,9 @@ variable "aws_region" {
 }
 variable "project" {
   type = string
-  default = "dev-portfolio"
   description = "Unique identifier for the project"
+}
+variable "domain" {
+  type = string
+  description = "Main Domain use for project"
 }

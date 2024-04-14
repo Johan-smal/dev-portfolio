@@ -29,6 +29,7 @@ module "infra" {
   project = var.project
   aws_region = var.aws_region
   is_localstack = local.is_localstack
+  domain = var.domain
 }
 
 output "is_localstack" {

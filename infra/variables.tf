@@ -5,6 +5,9 @@ variable "is_localstack" {
 variable "aws_region" {
   type = string
 }
+variable "domain" {
+  type = string
+}
 variable "project" {
   type = string
 }
