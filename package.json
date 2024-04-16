@@ -4,13 +4,19 @@
   "description": "Template for developers website",
   "main": "src/index.ts",
   "scripts": {
-    "dev": "esbuild --watch --bundle --outfile=./dist/index.js --platform=node --target=node18 ./src/index.ts",
-    "build": "esbuild --minify --bundle --outfile=./dist/index.js --platform=node --target=node18 ./src/index.ts"
+    "dev:esbuild": "esbuild --watch --bundle --outfile=./dist/index.js --platform=node --target=node18 ./src/index.ts",
+    "build:esbuild": "esbuild --minify --bundle --outfile=./dist/index.js --platform=node --target=node18 ./src/index.ts",
+    "dev:tailwind": "tailwindcss -i ./public/index.css -o ./dist_public/output.css --watch",
+    "build:tailwind": "tailwindcss -i ./public/index.css -o ./dist_public/output.css",
+    "build:js": "esbuild --outfile=./dist_public/output.js --platform=node --target=node16 --bundle ./public/index.js",
+    "build": "npm-run-all --parallel build:*",
+    "dev": "npm-run-all --parallel dev:*"
   },
   "keywords": [
     "hono",
     "jsx",
-    "localstack"
+    "localstack",
+    "tailwindcss"
   ],
   "author": "Johan Smal",
   "license": "MIT",
@@ -20,11 +26,13 @@
     "@types/mdx": "^2.0.13",
     "@types/node": "^20.12.7",
     "esbuild": "^0.20.2",
+    "npm-run-all": "^4.1.5",
     "tailwindcss": "^3.4.3",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   },
   "dependencies": {
-    "hono": "^4.2.3"
+    "hono": "^4.2.3",
+    "htmx.org": "^1.9.11"
   }
 }

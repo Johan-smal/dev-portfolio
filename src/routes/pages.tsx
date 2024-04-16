@@ -1,19 +1,16 @@
 import { Hono } from 'hono'
+import { createMiddleware } from 'hono/factory'
 import { jsxRenderer } from 'hono/jsx-renderer'
 import { Home } from '../templates/pages/Home'
 import { Base } from '../templates/Base'
 
-const app = new Hono().basePath('/')
+const app = new Hono()
 
-declare module 'hono' {
-  interface ContextRenderer {
-    (content: string | Promise<string>, props: { title: string }): Response
-  }
+const pageMiddleware = (title: string) => {
+  return createMiddleware(jsxRenderer(({ children }) => <Base title={title}>{ children }</Base>))
 }
 
-app.use('*', jsxRenderer(({ children, title }) => <Base title={title}>{ children }</Base>))
-
-app.get('/', (c) => c.render(<Home />, { title: "Developer Home Page"}))
+app.get('/', pageMiddleware("Developer Home Page"), (c) => c.render(<Home />))
 
 export default app;
 

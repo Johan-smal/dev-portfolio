@@ -8,9 +8,12 @@ resource "aws_lambda_function" "hono_handler" {
   timeout       = 30
 
   environment {
-    variables = {
-      
-    }
+    variables = merge({
+      PUBLIC_DIST_ENDPOINT = local.public_dist_endpoint
+      STAGE = terraform.workspace
+    }, var.is_localstack ? {
+      IS_LOCAL = var.is_localstack
+    } : {})
   }
 }
 
