@@ -45,7 +45,7 @@ export const Base: FC<BaseProps> = async ({ children, title }) => {
       </head>
       <Nav items={items}/>
       <body>
-        { children }
+        <div id="main-container">{ children }</div>
       </body>
     </html>
   )
