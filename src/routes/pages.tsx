@@ -12,10 +12,7 @@ const app = new Hono()
 
 const pageMiddleware = (title: string) => {
   return createMiddleware(jsxRenderer(({ children }, ctx) => {
-    const { IS_LOCAL, STAGE } = env<{ IS_LOCAL?: string, STAGE: string }>(ctx)
-    const configureRoute = IS_LOCAL ? `/${STAGE}${ctx.req.path}` : ctx.req.path;
     if (ctx.req.header('Hx-Request')) {
-      ctx.header('HX-Replace-Url', `${configureRoute}`)
       return <>
         <head><title>{title}</title></head>
         {children}
