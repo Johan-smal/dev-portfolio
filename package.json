@@ -26,6 +26,7 @@
     "@types/aws-lambda": "^8.10.137",
     "@types/mdx": "^2.0.13",
     "@types/node": "^20.12.7",
+    "daisyui": "^4.10.2",
     "esbuild": "^0.20.2",
     "live-server": "^1.2.2",
     "npm-run-all": "^4.1.5",

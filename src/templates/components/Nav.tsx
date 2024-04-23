@@ -61,7 +61,7 @@ type NavProps = {
 
 export const Nav: FC<NavProps> = ({ items }) => {
   return (
-    <nav class="fixed w-6 h-6 top-5 left-5 md:w-screen md:left-0 md:top-0">
+    <nav class="fixed w-6 h-6 top-5 left-5 z-50 md:w-screen md:left-0 md:top-0">
       <label class="relative cursor-pointer" for="mobile-menu">
         <input class="peer absolute w-full h-full opacity-0 cursor-pointer" type="checkbox" id="mobile-menu" />
         <BurgerMenu />

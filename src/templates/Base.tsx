@@ -2,6 +2,7 @@ import type { FC, PropsWithChildren } from 'hono/jsx'
 import { useRequestContext } from 'hono/jsx-renderer'
 import { env } from 'hono/adapter'
 import { Nav } from './components/Nav'
+import { Footer } from './components/Footer'
 
 type BaseProps = PropsWithChildren<{
   title: string
@@ -15,7 +16,7 @@ export const Base: FC<BaseProps> = async ({ children, title }) => {
     css: `${PUBLIC_DIST_ENDPOINT}/output.css`,
   }
 
-  const items = [
+  const navItems = [
     {
       title: "home",
       route: "/"
@@ -34,6 +35,25 @@ export const Base: FC<BaseProps> = async ({ children, title }) => {
     }
   ]
 
+  const footerItems = [
+    {
+      title: 'location',
+      children: <>Amsterdam</>
+    },
+    {
+      title: 'contact',
+      children: <>me@portfolio.dev</>
+    },
+    {
+      title: 'social',
+      children: <>socialmedia stuff</>
+    },
+    {
+      title: 'built',
+      children: <>© 2024 by Johan Smal</>
+    }
+  ]
+
   return (
     <html>
       <head>
@@ -43,10 +63,11 @@ export const Base: FC<BaseProps> = async ({ children, title }) => {
         <script src={js}></script>
         <title>{ title }</title>
       </head>
-      <Nav items={items}/>
+      <Nav items={navItems}/>
       <body>
         <div id="main-container">{ children }</div>
       </body>
+      <Footer items={footerItems} />
     </html>
   )
 }
